@@ -1,0 +1,58 @@
+// 商品规格型号选择
+//   当角色没有采购权限时，规格不可选，仅显示
+
+<template>
+    <div class="model">
+        <h3>规格型号</h3>
+       <ul>
+         <model-button 
+         v-for="(item,index) in model" 
+         v-on:selectedModelsChange="handleModelChange" 
+         v-bind:value="item"
+         :key="index"
+         ></model-button>
+       </ul>
+       {{model}}
+    </div>
+    
+</template>
+<script>
+// 数据为请求过来的型号
+import {mapState} from 'vuex';
+import ModelButton from './ModelButton.vue';
+  export default {
+    methods: {
+      //  此处应该判断是否在已选类型中已有了
+      handleModelChange(id) {
+        this.$store.commit('CHANGE_GOODS_MODEL',{id});
+      }
+    },
+    computed :{
+       ...mapState({
+        model(state){
+          return state.detail.goods_model;
+        },
+      })
+    }
+     
+    ,
+    components : {
+      ModelButton
+    },
+    mounted : function(){
+     
+    }
+  };
+</script>
+<style lang="scss">
+  .model{
+    h3{
+      font-size:14px;
+      color:#666a73;
+      text-align:left;
+    }
+    ul{
+
+    }
+  }
+</style>
