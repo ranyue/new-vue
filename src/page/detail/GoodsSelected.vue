@@ -2,6 +2,7 @@
 <template>
     <div class="goods-checked">
         <h3>已选清单</h3>
+        {{selectedList}}
         <div v-for="item in selectedList">
               <selected v-bind:list="item"></selected>
         </div>     
@@ -10,25 +11,13 @@
 
 <script>
 import Selected from './Selected.vue';
-import {mapState} from 'vuex';
+import {mapState,mapGetters} from 'vuex';
   export default {
-  data(){
-    return {
-       selectedList : [],
-    }
-  },
    computed :{
-     ...mapState({
-         selectedList(state){
-             let selectedList = [];
-             for(let i =0;i< state.detail.good_model.length;i++){
-                if( state.detail.good_model[i].selected){
-                    selectedList.push( state.detail.good_model[i])
-                }
-             }
-            return  selectedList;// 已选择的商品类型
-        },
-     })
+     
+     ...mapGetters({
+                selectedList : 'get_selected_model' 
+            })
    },
     components : {
         Selected

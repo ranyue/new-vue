@@ -1,7 +1,7 @@
 import * as types from '../mutation-types';
 import {API} from '../../api/api.js';
-//import axios from 'axios';
 import {Fetch} from '../../utils/utils.js';
+
 
 const state = {
     goods_model : [
@@ -15,6 +15,7 @@ const state = {
             num : 0 
         },
     ],
+
     get_goods_data_success : false,
     category : [],
     goods_data : {
@@ -44,6 +45,14 @@ const state = {
     }
 };
 
+const getters = {
+
+    get_selected_model(state){
+        return state.goods_model.filter((model)=>{
+           return model.selected == true;
+        })
+    }
+}
 
 const actions = {
    //获取商品详情
@@ -98,18 +107,26 @@ const mutations = {
     },
     
     // 更改商品规格
-    [types.CHANGE_GOODS_MODEL](state,{id}){
+    [types.CHANGE_GOODS_MODEL](state,id){
+       
+
         for(let i =0;i<state.goods_model.length;i++){
-            if(state.goods_model[i].productId == id){
-                //如果已经被选中，再点即取消
-                if(state.goods_model[i].selected){
-                    state.goods_model[i].num = 0;
-                }else{
-                    // 没有选中， 再点击即选中
-                    state.goods_model[i].num = 1;
+          
+            
+                console.log(state.goods_model[i].productId,id);
+                if(state.goods_model[i].productId == id){
+                    //如果已经被选中，再点即取消
+                      console.log(state.goods_model[i].productId);
+                    if(state.goods_model[i].selected){
+                        state.goods_model[i].num = 0;
+                    }else{
+                        // 没有选中， 再点击即选中
+                        state.goods_model[i].num = 1;
+                    }
+                    state.goods_model[i].selected = !state.goods_model[i].selected;
                 }
-                state.goods_model[i].selected = !state.goods_model[i].selected;
-            }
+            
+            
         }       
     },
 
@@ -138,8 +155,9 @@ const mutations = {
         state.goods_data.storeName = response.productspu.storeName;//供应商
         // 商品规格 
         const length = response.productsku.length;
+        let model = [];
         for(let i =0;i<length;i++){
-                state.goods_model[i]={
+                model[i]={
                     specification : response.productsku[i].specification,// 型号
                     salesPrice : response.productsku[i].salesPrice, // 价格
                     agreePrice : response.productsku[i].agreePrice , // 是否为协议价
@@ -149,6 +167,7 @@ const mutations = {
                     num : 0
                 }
         }
+        state.goods_model = model;
         //商品次要信息
         state.goods_second_info.unit = response.productspu.unit;//单位
         state.goods_second_info.attribute = response.productspu.attribute;//材质
@@ -192,7 +211,8 @@ const mutations = {
 export default {
     state,
     actions,
-    mutations
+    mutations,
+    getters
 }
 
 // {"msg":null,

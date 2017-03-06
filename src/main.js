@@ -6,8 +6,6 @@ import router from './router'
 import store  from './vuex/store'
 import { currency } from './currency'
 
-import { Button , InputNumber} from 'element-ui'
-
 import { Button, InputNumber, Checkbox, Breadcrumb, BreadcrumbItem } from 'element-ui'
 
 //import 'element-ui/lib/theme-default/index.css'

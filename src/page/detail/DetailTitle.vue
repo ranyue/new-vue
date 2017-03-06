@@ -23,7 +23,6 @@
             name(){
                 return this.$store.state.detail.goods_data.name
             }
-           
         }, 
         mounted : function(){
         }

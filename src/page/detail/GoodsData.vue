@@ -9,11 +9,11 @@
         <div>
             <div class="priceContent">
                 <div class="goods_info">
-                    <span>促销价</span><span class="lowerPrice">{{model.salesPrice}}</span>
-                    <span v-if="model.agreePrice">协议价</span>
+                    <span>促销价</span><span class="lowerPrice">{{model[0].salesPrice}}</span>
+                    <span v-if="model[0].agreePrice">协议价</span>
                 </div>
                 <div class="goods_info" >
-                    <span>市场价</span><span>{{model.salesPrice*1.1}}￥</span>
+                    <span>市场价</span><span>{{model[0].salesPrice*1.1}}￥</span>
                 </div>
                 
             </div>
@@ -31,26 +31,30 @@
                     <span>供应商</span><span>{{goodsData.storeName}}</span>
                 </div>
             </div> 
-           {{model[0]}}
-           {{model}}
+          
+       
         </div>
     </div>
 </template>
 <script>
-    import {mapState} from 'vuex';
+    import {mapState, mapGetters} from 'vuex';
     export default {
         computed : {
+             model(){  
+                return  this.$store.state.detail.goods_model;
+            },  
             ...mapState({
                 goodsData(state){
                     return state.detail.goods_data;
                 },
-                model(state){
-                    // 应根据 选中的商品来显示，默认第一个
-                    // return state.detail.goods_model;
-                    var arr = state.detail.goods_model
-                    return arr.unshift();
-                },
+                // model(state){
+                //     // 应根据 选中的商品来显示，默认第一个
+                //     return state.detail.goods_model;  
+                // },
             }),
+            ...mapGetters({
+                selectedLists : 'get_selected_model' 
+            })
         }
     }
 </script>
