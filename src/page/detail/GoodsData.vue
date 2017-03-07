@@ -103,7 +103,17 @@
                         line-height:32px;
                         text-align:left;
                     }
+                     &:nth-of-type(2){
+                        >span{
+                            &:nth-of-type(2){
+                                text-decoration: line-through;
+                            }
+                        }
+                        
+                    }
+                   
                 }
+                
                
                
             }

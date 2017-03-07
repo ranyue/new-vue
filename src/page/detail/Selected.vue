@@ -3,30 +3,15 @@
         <div>
             <span>{{list.specification}}</span>
         </div>
-       
           <div>  
               <span>￥{{list.salesPrice}}</span>
           </div>
           <div>
               <el-input-number v-model="num" size="small" v-bind:min="1" v-on:change="handleBuyNum"></el-input-number>
-              <!--<el-input-number v-model="num" size="small"></el-input-number>-->
-
-              <!--<div>
-                <button>-</button>
-                <input>
-                <button>+</button>
-              </div>-->
           </div>
-          
           <div v-on:click="handleClick">删除</div>
-        
     </div>
 </template>
-
-
-
-
-
 <script>
 import {mapState} from 'vuex';
   export default {
@@ -102,28 +87,6 @@ import {mapState} from 'vuex';
       }
       &:nth-of-type(3){
         padding-right: 40px;
-       div{
-        //  display: flex;
-        //  button{
-        //      background:#f4f4f4;
-        //       border:1px solid #e3e3e3;
-        //       width:18px;
-        //       height:18px;
-        //       display: flex;
-        //       justify-content: center;
-        //       align-items: center;
-        //       &:focus{
-        //         border:1px solid #f1496f;
-        //       }
-        //  }
-        //  input{
-        //    background:#ffffff;
-        //     border:1px solid #e3e3e3;
-        //     width:40px;
-        //     height:18px;
-        //  }
-       
-       }
       }
       &:nth-of-type(4){
         font-size:14px;

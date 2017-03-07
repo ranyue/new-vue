@@ -8,6 +8,7 @@
          v-on:selected_models_change="handleModelChange" 
          v-bind:value="item"
          :key="index"
+         v-bind:class="{selectedStyle : item.selected}"
          ></ModelButton>
        </ul>
        
@@ -51,7 +52,16 @@ import ModelButton from './ModelButton.vue';
       text-align:left;
     }
     ul{
-
+        .selectedStyle {   
+          background-image :url('../../assets/check.png');
+          background-size :25%;
+          border-color:#f1496f;
+          background-repeat :no-repeat;
+          background-position: 100% 100%;
+            div{
+                color : #f1496f;
+            }       
+        }
     }
   }
 </style>

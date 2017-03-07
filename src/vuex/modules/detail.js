@@ -181,8 +181,8 @@ const mutations = {
                     salesPrice : response.productsku[i].salesPrice, // 价格
                     agreePrice : response.productsku[i].agreePrice , // 是否为协议价
                     productId : response.productsku[i].productId,// 商品id
-                    sku : response.productsku[i].sku, // 规格sku 编码 
-                    goodsSkuId : response.productsku[i].id, 
+                    id : response.productsku[i].id, 
+                    goodsSkuId : response.productsku[i].sku, // 规格sku 编码 
                     selected : false,
                     num : 0
                 }

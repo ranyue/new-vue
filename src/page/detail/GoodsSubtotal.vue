@@ -3,23 +3,20 @@
     <div class="subtotal">
         <div>
             <span>已选&nbsp;{{number}}&nbsp;个</span>
-            <span>￥{{totalPrice}}</span>
+            <span>{{totalPrice}}￥</span>
         </div>
-       <button type="text" v-on:click="addtoshopingcart">加入购物车</button>
+       <button type="button" v-on:click="addtoshopingcart" >加入购物车</button>
     </div>
 </template>
 <script>
     import {mapState,mapGetters} from 'vuex';
     export default { 
-      
-
         computed :{ 
             ...mapGetters({
                 number : 'get_subtotal_num',
                 totalPrice: 'get_subtotal_price'
             })
         },
-        
         methods : {
             // 加入购物车
 
@@ -30,7 +27,9 @@
 // 成功 ： {"code":"A0000","msg":null}
 
             addtoshopingcart : function(){
-             
+               if(!this.number){
+                   return ;
+               }
                 this.$store.dispatch('add_to_shoping_car',{
                     "buyerId":"1:2:3",
                     "goodsId":1,
@@ -80,6 +79,9 @@
             color:#fff;
             font-size: 18px;
             margin-bottom: 30px;
+            cursor:pointer;
+           
+        
        }
     }
 </style>
