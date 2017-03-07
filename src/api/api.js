@@ -121,3 +121,38 @@ export const selectGood = (id, type, isSelected) => {
   }
   return Fetch(API.selectGood , obj)
 }
+// 获取订单确认商品
+export const orderGenerate = (items) => {
+  console.log('orderGenerate')
+  let obj = {
+    userId: userId,
+    items: items
+  }
+  return Fetch(API.generateOrder, obj)
+}
+// 获取地址列表
+export const queryAddressList = () => {
+  let obj = {
+    userId: userId
+  }
+  return Fetch(API.queryAddressList, obj)
+}
+// 设置默认地址
+export const setDefaultAddress = (id) => {
+  let obj = {
+    id: id,
+    userId: userId
+  }
+  return Fetch(API.setDefaultAddress, obj)
+}
+// order 提交
+export const submitOrder = (addressId, cartId, storeInfo) => {
+  let obj = {
+    addressId: addressId,
+    cartIds: cartId,
+    member: userId,
+    storeInfo: storeInfo
+
+  }
+  return Fetch(API.submitOrder, obj)
+}

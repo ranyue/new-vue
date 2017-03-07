@@ -1,8 +1,8 @@
 
 <template>
-    <div class="goods-checked">
+    <div class="goods-selected">
         <h3>已选清单</h3>
-        {{selectedList}}
+        
         <div v-for="item in selectedList">
               <selected v-bind:list="item"></selected>
         </div>     
@@ -24,3 +24,17 @@ import {mapState,mapGetters} from 'vuex';
     },
   };
 </script>
+
+<style lang="scss">
+    .goods-selected{
+        display:  flex;
+        margin-top: 20px;
+        height: 34px;
+        >h3{
+            padding-right: 24px;
+        }
+        >div{
+            display: flex;
+        }
+    }
+</style>

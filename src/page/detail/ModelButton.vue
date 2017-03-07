@@ -1,7 +1,7 @@
 <template>
-    <li>
-        <button type="submit" v-on:click="handleClick">{{value.specification}}</button>
-       {{value}}
+    <li class="modelButton"  v-on:click="handleClick">
+        <div>{{value.specification}}</div>
+      
     </li>
 </template>
 <script>
@@ -18,8 +18,20 @@
             handleClick : function(){
                 // 选择或者取消对应的商品规格
                 this.$emit('selected_models_change', this.value.productId);
-                console.log('selected_models_change',this.value.productId);
             } 
         }
     }
 </script>
+
+<style lang="scss">
+    li.modelButton {
+        background:#ffffff;
+        border:1px solid #e3e3e3;
+        padding: 5px 10px 8px 11px;
+        div{
+            font-size:14px;
+            color:#666a73;
+            text-align:left;
+        }
+    }
+</style>

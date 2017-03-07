@@ -1,7 +1,7 @@
 
 
 <template>
-    <div>
+    <div class="secondInfo">
         <ul>
             <li v-if="second_info.unit">
                 <span>单位</span>
@@ -42,3 +42,30 @@ import {mapState} from 'vuex';
         },
     }
 </script>
+<style lang="scss">
+    .secondInfo{
+        
+        
+        display: flex;
+        justify-content: center;
+        ul{
+            background:#f7f7f7;
+            width:800px;
+            padding: 20px 0;
+            li{
+                margin-left: 20px;
+                font-size:14px;
+                color:#666a73;
+                line-height:24px;
+                >span{
+                    &:nth-of-type(1){
+                        margin-right: 20px;
+                    }
+                    &:nth-of-type(2){
+
+                    }
+                }
+            }
+        }
+    }
+</style>

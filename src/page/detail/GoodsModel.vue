@@ -23,17 +23,7 @@ import ModelButton from './ModelButton.vue';
    computed : {
              model(){  
                 return  this.$store.state.detail.goods_model
-            },  
-            // ...mapState({
-            //     goodsData(state){
-            //         return state.detail.goods_data;
-            //     },
-                
-            //     model(state){
-                  
-            //         return state.detail.goods_model;  
-            //     },
-            // }),
+            }, 
             ...mapGetters({
                 selectedLists : 'get_selected_model' 
             })
@@ -52,9 +42,12 @@ import ModelButton from './ModelButton.vue';
 </script>
 <style lang="scss">
   .model{
+    display: flex;
+    padding-top: 29px;
     h3{
       font-size:14px;
       color:#666a73;
+      padding-right: 24px;
       text-align:left;
     }
     ul{

@@ -12,7 +12,8 @@ const state = {
             productId : null,
             sku : null,
             selected : false,
-            num : 0 
+            num : 0 ,
+            goodsSkuId : null,
         },
     ],
 
@@ -51,6 +52,24 @@ const getters = {
         return state.goods_model.filter((model)=>{
            return model.selected == true;
         })
+    },
+    get_subtotal_num(){
+        let num = 0;
+        for(let i=0;i<state.goods_model.length;i++){
+            if(state.goods_model[i].selected){
+                num += state.goods_model[i].num;
+            }
+        }
+        return num ;
+    },
+    get_subtotal_price(){
+        let num = 0;
+        for(let i =0;i<state.goods_model.length;i++){
+             if(state.goods_model[i].selected){
+                 num += state.goods_model[i].num*state.goods_model[i].salesPrice;
+             }
+        }
+        return num ;
     }
 }
 
@@ -76,13 +95,14 @@ const actions = {
     // "goodsId":66,
     // "goodsSkuId":65,
     // "goodsNum":2
-    addtoshopingcar ({commit},payload){
-        Fetch(api.addCart,{...payload})
+    add_to_shoping_car ({commit},payload){
+        Fetch(API.addCart,{...payload})
         .then(
             response =>{
+                console.log(response);
                 if(response.code == 'A0000'){
                     commit(types.ADD_TO_SHOPING_CAR_SUCCESS)
-                }else{
+                }else{  
                     commit(types.ADD_TO_SHOPING_CAR_FAILED)
                 }
             }
@@ -91,7 +111,6 @@ const actions = {
             console.log(e)
         })
     },
-
 };
 
 const mutations = {
@@ -101,9 +120,9 @@ const mutations = {
         console.log('成功添加到购物车');
     },
     // 添加到购物车失败
-    [types.ADD_TO_SHOPING_CAR_SUCCESS](state){
+    [types.ADD_TO_SHOPING_CAR_FAILED](state){
 
-        console.log('成功添加到购物车');
+        console.log('添加到购物车失败');
     },
     
     // 更改商品规格
@@ -163,6 +182,7 @@ const mutations = {
                     agreePrice : response.productsku[i].agreePrice , // 是否为协议价
                     productId : response.productsku[i].productId,// 商品id
                     sku : response.productsku[i].sku, // 规格sku 编码 
+                    goodsSkuId : response.productsku[i].id, 
                     selected : false,
                     num : 0
                 }
@@ -190,8 +210,10 @@ const mutations = {
         state.get_goods_data_failed = true;
     },
     // 删除 商品规格 从 selected_model
-    [types.DELETE_SELECTED_MODEL](state,{id}){
-        for(let i =0;i<state.goods_model;i++){
+    [types.DELETE_SELECTED_MODEL](state,id){
+       
+        for(let i =0;i<state.goods_model.length;i++){
+               console.log('mutation',i)
             if(state.goods_model[i].productId == id){
                 state.goods_model[i].num = 0;
                 state.goods_model[i].selected = false;
@@ -200,7 +222,8 @@ const mutations = {
     },
     // 添加购买个数
     [types.HANDLE_BUY_NUM](state,{num,id}){
-       for(let i =0;i<state.goods_model;i++){
+        console.log('HANDLE_BUY_NUM',num,id)
+       for(let i =0;i<state.goods_model.length;i++){
             if(state.goods_model[i].productId == id){
                 state.goods_model[i].num = num;
             }

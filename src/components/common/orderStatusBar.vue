@@ -9,7 +9,7 @@
 
 <template>
 	<div class='order_status_bar'>
-		<div>我的购物车</div>
+		<div>{{status[currentStatus-1]}}</div>
 		<div>
 			<div v-bind:class="[currentStatus==1?'order-status-active':'',currentStatus==2?'order-status-active':'',currentStatus==3?'order-status-active':'']"><span>1</span>我的购物车</div>
 			<div v-bind:class="[currentStatus==2?'order-status-active':'',currentStatus==3?'order-status-active':'']"><div></div><span>2</span>提交订单</div>
@@ -23,7 +23,7 @@
 		props: ['currentStatus'],
 		data (){
 			return {
-				
+				status:['我的购物车', '提交订单', '订单完成']
 			}
 		},
 		computed: {

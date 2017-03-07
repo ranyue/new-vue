@@ -1,9 +1,8 @@
-
-/**
- * author: Yank
- * date: 2017-03-06
- * usage: 将所需改变的props数据填入，进行操作
- */
+ /**
+  * author: Yank 
+  * date: 2017-03-06 
+  * usage: 将所需改变的props数据填入，进行操作
+   */
 
 
 <template>
@@ -36,15 +35,7 @@
   </div>
 </template>
 <script>
-  // import {
-  //   changeNum,
-  //   cartDelete,
-  //   selectGood
-  // } from '../../api/api.js';
-  import {
-    mapMutations,
 
-  } from 'vuex';
 
   export default {
     name: 'GoodsItem',
@@ -66,43 +57,21 @@
 
     },
     methods: {
-      // ...mapMutations([
-      //   'INITCART'
-      // ]),
       changeGoodsNum(value) {
-        console.log('商品数量' + value)
         this.$store.dispatch('changeGoodsNum', {
           cartId: this.goods.cartId,
           value: value
         })
-        // changeNum(this.goods.cartId, value).then((res) => {
-        //   if (res.code === 'A0000') {
-        //     this.INITCART(res)
-        //   }
-        // })
       },
       doCartDelete() {
-        console.log('删除商品')
-         this.$store.dispatch('doCartDelete',  this.goods.cartId)
-
-        // cartDelete(this.goods.cartId).then((res) => {
-        //   if (res.code == 'A0000') {
-        //     this.INITCART(res.data)
-        //   }
-        // })
+        this.$store.dispatch('doCartDelete', this.goods.cartId)
       },
       doSelectGood() {
-        console.log('选择商品')
-         this.$store.dispatch('doSelectGood', {
+        this.$store.dispatch('doSelectGood', {
           cartId: this.goods.cartId,
           type: 1,
           isSelected: !this.isSelected
         })
-        // selectGood(this.goods.cartId, 1, !this.isSelected).then((res) => {
-        //   if (res.code == 'A0000') {
-        //     this.INITCART(res.data)
-        //   }
-        // })
       }
     }
   }

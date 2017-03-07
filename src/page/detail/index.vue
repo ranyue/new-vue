@@ -1,9 +1,9 @@
 <template>
     <div id="detail">
-        <div>
+        <div class="top">
             <DetailTitle ></DetailTitle>
         </div>
-        <div class="top">
+        <div class="mid">
             <div class="left">
                 <GoodsShow ></GoodsShow>
             </div>
@@ -69,149 +69,41 @@
         }
     }
 </script>
+<style lang="scss">
+    #detail{
+        padding-left: 20px;
+        background-color: #fff;
+        flex-wrap: wrap;
+       .top{
+           display: flex;
+            width: 100%;
+            padding: 34px 0 28px; 
+       }
+       .mid{
+           display: flex;
+           .left{
+                width: 314px;
+                margin-right: 20px;
+           }
+           .right{
+               width: 791px;
+
+           }
+       }
+       .bottom{
+           display: flex;
+            width: 100%;
+            justify-content: center;
+            flex-direction: column;
+       }
+    }
+</style>
 
 
 
 
 
 
-// {"msg":null,
-// "code":"A0000",
-// "productsku":[{
-//     "agreePrice":"",
-//     "batchNumber":1,
-//     "goodLabel":0,
-//     "goodStatus":0,
-//     "goodsImage":"",
-//     "height":0,
-//     "id":1294,
-//     "length":0,
-//     "name":"KOOLTOUCH/顶瑞 加厚有粉乳胶手套 KT007 6g 10盒/箱×100只/盒",
-//     "origin":"马来西亚",
-//     "productId":465,
-//     "saledNumber":0,
-//     "salesPrice":"278.30",
-//     "sku":"FDST006-1",
-//     "specification":"XS",
-//     "stock":10000,
-//     "stockWarning":10,
-//     "weight":0,
-//     "width":0
-//     },
-//     {"agreePrice":"",
-//     "batchNumber":1,
-//     "goodLabel":0,
-//     "goodStatus":0,
-//     "goodsImage":"",
-//     "height":0,
-//     "id":1295,
-//     "length":0,
-//     "name":"KOOLTOUCH/顶瑞 加厚有粉乳胶手套 KT007 6g 10盒/箱×100只/盒",
-//     "origin":"马来西亚",
-//     "productId":465,
-//     "saledNumber":0,
-//     "salesPrice":"278.30",
-//     "sku":"FDST006-2",
-//     "specification":"S",
-//     "stock":10000,
-//     "stockWarning":10,
-//     "weight":0,
-//     "width":0
-//     },
-//     {"agreePrice":"",
-//     "batchNumber":1,
-//     "goodLabel":0,
-//     "goodStatus":0,
-//     "goodsImage":"",
-//     "height":0,
-//     "id":1296,
-//     "length":0,
-//     "name":"KOOLTOUCH/顶瑞 加厚有粉乳胶手套 KT007 6g 10盒/箱×100只/盒",
-//     "origin":"马来西亚",
-//     "productId":465,
-//     "saledNumber":0,
-//     "salesPrice":"278.30",
-//     "sku":"FDST006-3",
-//     "specification":"M",
-//     "stock":10000,
-//     "stockWarning":10,
-//     "weight":0
-//     ,"width":0
-//     },
-//     {"agreePrice":"",
-//     "batchNumber":1,
-//     "goodLabel":0,
-//     "goodStatus":0,
-//     "goodsImage":"",
-//     "height":0,
-//     "id":1297,
-//     "length":0,
-//     "name":"KOOLTOUCH/顶瑞 加厚有粉乳胶手套 KT007 6g 10盒/箱×100只/盒",
-//     "origin":"马来西亚",
-//     "productId":465,
-//     "saledNumber":0,
-//     "salesPrice":"303.60",
-//     "sku":"FDST006-4",
-//     "specification":"L",
-//     "stock":10000,
-//     "stockWarning":10,
-//     "weight":0,
-//     "width":0
-//     }],
 
-//   "productspu":{
-//         "attribute":"乳胶",
-//         "boxBin":"",
-//         "brandId":32,
-//         "brandName":"KOOLTOUCH/顶端",
-//         "category1stId":69,
-//         "category1stName":"感染预防",
-//         "category2stId":171,
-//         "category2stName":"手套",
-//         "category3stId":172,
-//         "category3stName":"乳胶手套",
-//         "code":"",
-//         "couponId":0,
-//         "createDate":{
-//             "date":21,
-//             "day":2,
-//             "hours":13,
-//             "minutes":54,
-//             "month":1,
-//             "seconds":47,
-//             "time":1487656487000,
-//             "timezoneOffset":-480,
-//             "year":117},
-//             "discountId":0,
-//             "goodsImage":"https://lcsaas.oss-cn-hangzhou.aliyuncs.com/etrade/test/465/FDST006-1.jpg",
-//             "goodsInstruction":"1. 有粉光面，穿戴容易\n2. 加厚耐用型，面对病原体和污染提供更有力的保护屏障",
-//             "hasAgreePrice":0,
-//             "id":465,
-//             "imgList":["https://lcsaas.oss-cn-hangzhou.aliyuncs.com/etrade/test/465/FDST006-1.jpg"],
-//             "lcCode":"1100000455000",
-//             "linkedProduct":"",
-//             "lowestPrice":"278.30",
-//             "medicalRegistNum":"",
-//             "modifyDate":{
-//                 "date":21,
-//                 "day":2,
-//                 "hours":13,
-//                 "minutes":54,
-//                 "month":1,
-//                 "seconds":47,
-//                 "time":1487656487000,
-//                 "timezoneOffset":-480,
-//                 "year":117
-//                 },
-//             "name":"KOOLTOUCH/顶瑞 加厚有粉乳胶手套 KT007 6g 10盒/箱×100只/盒",
-//             "origin":"",
-//             "saledNumber":0,
-//             "salesStatus":0,
-//             "serviceAreaCity":"",
-//             "serviceAreaProvince":"",
-//             "storeId":7,
-//             "storeName":"上海富电国际贸易有限公司",
-//             "subtitle":"1.有粉光面，穿戴容易\n2.加厚耐用型，面对病原体和污染提供更有力的保护屏障",
-//             "unit":"箱"
-//             }
-//         }
+
+

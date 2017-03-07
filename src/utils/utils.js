@@ -39,14 +39,24 @@ const FormatStoreId = function(id, name) {
       return '特许经销商' + id;
     }
   }
-	  //删除sessionStorage
-const RemoveStorageObj = function(key) {
-    sessionStorage.removeItem(key);
+
+//储存localStorage 
+const SetLocalStorageObj = function(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
   }
-  //清空sessionStorage
-const ClearStorageObj = function() {
-  sessionStorage.clear();
+  //获取localStorage 
+const GetLocalStorageObj = function(key, value) {
+  return JSON.parse(localStorage.getItem(key));
 }
+//删除localStorage
+const RemoveLocalStorageObj = function(key) {
+    localStorage.removeItem(key);
+  }
+  //清空localStorage
+const ClearLocalStorageObj = function() {
+  localStorage.clear();
+}
+
 //储存sessionStorage 
 const SetSessionStorageObj = function(key, value) {
     sessionStorage.setItem(key, JSON.stringify(value));
@@ -55,6 +65,15 @@ const SetSessionStorageObj = function(key, value) {
 const GetSessionStorageObj = function(key, value) {
   return JSON.parse(sessionStorage.getItem(key));
 }
+//删除sessionStorage
+const RemoveStorageObj = function(key) {
+    sessionStorage.removeItem(key);
+  }
+  //清空sessionStorage
+const ClearStorageObj = function() {
+  sessionStorage.clear();
+}
+
 // 包装fetch,业务均采用post发送
 import  'whatwg-fetch'
 const Fetch = function(url, queryObj = {}, option = {
@@ -69,6 +88,10 @@ const Fetch = function(url, queryObj = {}, option = {
   }
 export {
 	//Rem,
+  SetLocalStorageObj,
+	GetLocalStorageObj,
+	ClearLocalStorageObj,
+	RemoveLocalStorageObj,
 	SetSessionStorageObj,
 	GetSessionStorageObj,
 	ClearStorageObj,

@@ -8,6 +8,7 @@ import * as getters from './getters'
 //new add
 import shopcart from './modules/shopcart'
 import detail from './modules/detail'
+import ordergenerate from './modules/orderGenerate.js'
 
 Vue.use(Vuex)
 
@@ -18,7 +19,8 @@ export default new Vuex.Store({
   getters,
   modules: {
     shopcart,
-    detail
+    detail,
+    ordergenerate
   },
   strict: debug
 })

@@ -5,12 +5,12 @@
  * usage: 购物车所需用到ACtions ,数据的计算在 view层完成
  */ 
 
-
+import { SetLocalStorageObj } from './../../utils/utils'
 
 import * as types from '../mutation-types'
 
 // 购物车页面所需请求
-import { queryCartList, changeNum, cartDelete, selectGood } from '../../api/api.js';
+import { queryCartList, changeNum, cartDelete, selectGood , orderGenerate } from '../../api/api.js';
 
 //建立本页独立 数据模型
 const state = {
@@ -60,6 +60,24 @@ const actions = {
       }
     })
   },
+  //获取order generate 页面数据
+  getOrderData({commit, state},{items,router}){
+     orderGenerate(items).then((res)=>{
+      if(res.code == 'A0000'){
+        SetLocalStorageObj('orderInfo', res);
+        //commit(types.INITORDERGENERATE, res);
+
+        router.push({
+          path:'/orderGenerate'
+        })
+      }else{
+        alert(res.msg)
+      }
+    }).catch((e)=>{
+      console.log('获取购物车数据'+ e)
+    })
+
+  }
   
 }
 
