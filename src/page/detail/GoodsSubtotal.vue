@@ -14,7 +14,8 @@
         computed :{ 
             ...mapGetters({
                 number : 'get_subtotal_num',
-                totalPrice: 'get_subtotal_price'
+                totalPrice: 'get_subtotal_price',
+                goodsCart : 'get_goods_cart'
             })
         },
         methods : {
@@ -30,13 +31,7 @@
                if(!this.number){
                    return ;
                }
-                this.$store.dispatch('add_to_shoping_car',{
-                    "buyerId":"1:2:3",
-                    "goodsId":1,
-                    "goodsSkuId":1,
-                    "goodsNum":4
-                    }
-                )
+                this.$store.dispatch('add_to_shoping_car',this.goodsCart)
             }
         }
     }

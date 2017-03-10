@@ -19,7 +19,7 @@
       <div class='ellipsis-3'> 规格：{{goods.specification}}</div>
     </div>
     <div>
-      <div v-if='!goods.status' :class='{unPrice: true}'>&yen;{{(goods.originalCost).toFixed(2)}}</div>
+      <div v-if='!goods.status' :class='{unPrice: true}'>&yen;{{goods.originalCost}}</div>
       <div v-else></div>
 
       <div v-if='!goods.status'>&yen;{{goods.goodsPriceString }}</div>

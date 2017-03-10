@@ -55,17 +55,14 @@
         //“productid”:”12345”, “start”:”0”, “num”:”10”，“tenantId”：“abcd”
         methods : {
             getGoodsData(){
-                this.$store.dispatch('get_goods_detail',{
-                    productid: "224",
-                    start: "0",
-                    num: "10",
-                    tenantId: "1"
-                });
+                console.log(  this.$route.query.productid,"mounted");
+                this.$store.dispatch('get_goods_detail', this.$route.query.productid);
             }
         },
-       created : function(){
+       mounted : function(){
             // 获取数据
              this.getGoodsData();
+             
         }
     }
 </script>

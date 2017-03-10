@@ -3,10 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store  from './vuex/store'
+import store from './vuex/store'
 import { currency } from './currency'
-
-import { Button, InputNumber, Checkbox, Breadcrumb, BreadcrumbItem } from 'element-ui'
+import { Button, InputNumber, Checkbox, Breadcrumb, BreadcrumbItem, Carousel, CarouselItem, Input, Cascader, Pagination } from 'element-ui'
 
 //import 'element-ui/lib/theme-default/index.css'
 
@@ -14,17 +13,25 @@ Vue.config.productionTip = false
 Vue.filter('currency', currency)
 Vue.use(Button)
 Vue.use(InputNumber)
-
 Vue.use(Checkbox)
+Vue.use(Cascader)
+Vue.use(Input)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
+
+Vue.use(Pagination)
+
+
+Vue.use(Carousel)
+Vue.use(CarouselItem)
+
 
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  store,
-  router,
-  template: '<App/>',
-  components: { App }
+    el: '#app',
+    store,
+    router,
+    template: '<App/>',
+    components: { App }
 })

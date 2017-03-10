@@ -22,6 +22,7 @@
           <AddressItem v-for='(item, index) in address.data' :addressItem='item' :key='index'></AddressItem>
         </div>
         <div>新增收货地址</div>
+        <AddAddress :address='editAddress'></AddAddress>
       </div>
       <div>
         <div>
@@ -39,6 +40,7 @@
   import OrderStatusBar from './../../components/common/orderStatusBar.vue';
   import StoreItem from './storeItem.vue';
   import AddressItem from './address.vue';
+  import AddAddress from './addAddress.vue';
   import {
     GetSessionStorageObj
   } from './../../utils/utils';
@@ -48,7 +50,8 @@
     components: {
       OrderStatusBar,
       StoreItem,
-      AddressItem
+      AddressItem,
+      AddAddress
     },
     data() {
       return {
@@ -61,6 +64,9 @@
       },
       address() {
         return this.$store.state.ordergenerate.address
+      },
+      editAddress(){
+        return this.$store.state.ordergenerate.editAddress
       }
     },
     created() {

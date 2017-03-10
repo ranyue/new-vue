@@ -8,7 +8,7 @@
 	<div class='address-item' :class="{'red-border': addressItem.isDefault}">
 		<div  :class="{'red-border-bottom': addressItem.isDefault}">
 			<div>{{addressItem.name}}</div>
-			<div><span>编辑</span>|<span>删除</span></div>
+			<div><span @click='doEditAddress' >编辑</span>|<span @click='doDeleteAddress'>删除</span></div>
 		</div>
 		<div @click='setDefault'>
 			<div>
@@ -43,6 +43,12 @@
 		methods:{
 			setDefault(){
 				this.$store.dispatch('setDefaultAdd',this.addressItem.id)
+			},
+			doEditAddress(){
+				this.$store.dispatch('doEditAddress', this.addressItem)
+			},
+			doDeleteAddress(){
+				this.$store.dispatch('doDeleteAddress', this.addressItem)
 			}
 		}
 	}

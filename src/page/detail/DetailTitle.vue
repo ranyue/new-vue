@@ -1,7 +1,6 @@
 
 <template>
     <div class="detailTitle">
-       
         <el-breadcrumb separator=">">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item>{{category[0]}}</el-breadcrumb-item>

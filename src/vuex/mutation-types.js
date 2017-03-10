@@ -1,30 +1,54 @@
 export const EXAMPLE = 'EXAMPLE';
 
-//cart 页面所需常量
+
+
+//cart 椤甸潰鎵�闇�甯搁噺
+
 export const INITCART = 'INITCART';
 export const CHANGENUM = 'CHANGENUM';
 export const CARTDELETE = 'CARTDELETE';
 
-//order generate 页面
+//order generate 椤甸潰
+
 export const INITORDERGENERATE = 'INITORDERGENERATE';
 export const INITADDRESS = 'INITADDRESS';
 export const SETDEFAULTADDRESS = 'SETDEFAULTADDRESS';
 export const SETISREGISTER = 'SETISREGISTER';
 export const SETREMARK = 'SETREMARK';
 
+//鍦板潃鐩搁棞
+export const ADDNEWADDRESS = 'ADDNEWADDRESS';
+export const DELETEADDRESS = 'DELETEADDRESS';
+export const UPDATEADDRESS = 'UPDATEADDRESS';
+export const EDITADDRESS = 'EDITADDRESS';
 
 
 
-// product detail 頁面
+
+// product detail 闋侀潰
+
 
 export const ADD_TO_SHOPING_CAR_SUCCESS = 'ADD_TO_SHOPING_CART_SUCCESS';
 export const ADD_TO_SHOPING_CAR_FAILED = 'ADD_TO_SHOPING_CART_FAILED';
-export  const CHANGE_GOODS_MODEL = 'CHANGE_GOODS_MODEL';
+export const CHANGE_GOODS_MODEL = 'CHANGE_GOODS_MODEL';
 export const CLICK_MODEL_BUTTON = 'CLICK_MODEL_BUTTON';
 export const GET_GOODS_DATA_SUCCESS = 'GET_GOODS_DATA_SUCCESS';
-export const GET_GOODS_DATA_FAILED ='GET_GOODS_DATA_FAILED';
-export const ADD_SELECTED_MODEL ='ADD_SELECTED_MODEL'
+export const GET_GOODS_DATA_FAILED = 'GET_GOODS_DATA_FAILED';
+export const ADD_SELECTED_MODEL = 'ADD_SELECTED_MODEL'
 export const INITIAL_MODEL = 'INITIAL_MODEL';
 export const DELETE_SELECTED_MODEL = 'DELETE_SELECTED_MODEL';
 export const HANDLE_BUY_NUM = 'HANDLE_BUY_NUM';
 
+
+//searchResult 
+
+
+export const GET_SEARCH_RESULT_SUCCESS = 'GET_SEARCH_RESULT_SUCCESS';
+export const GET_SEARCH_RESULT_FAILED = 'GET_SEARCH_RESULT_FAILED';
+
+
+//search 
+
+export const SEARCH_BY_TEXT_SUCCESS = 'SEARCH_BY_TEXT_SUCCESS';
+
+export const SEARCH_BY_TEXT_FAILED = "SEARCH_BY_TEXT_FAILED";

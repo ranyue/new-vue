@@ -1,0 +1,30 @@
+.momentbuy{
+    .title{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-bottom: solid 6px #b744b7;
+        margin-bottom: 20px;
+        &>*{
+            padding: 5px;
+        }
+        i{
+            font-size: 22px;
+        }
+        span{
+            font-size: 22px;
+            color: #3d3d3d;
+            font-family: PingFangSC-Medium;
+        }
+    }
+    .content{
+        display: flex;
+        justify-content: space-between;
+        div{
+            width: 375px;
+            height: 201px;
+            background: #d3d3d3;
+            background-image: url("http://placehold.it/375x201");
+        }
+    }
+}

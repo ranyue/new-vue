@@ -1,0 +1,29 @@
+.nav-bar{
+    ul{
+        display: flex;
+        background: #3d3d3d;
+        justify-content: space-around;
+        li{
+            flex: 1;
+            text-align: center;
+            list-style: none;
+            padding: 1em;
+            cursor: pointer;
+            &:nth-of-type(1){
+                background: #d43559;
+                width: 11rem;
+                flex: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            a{
+                text-decoration: none;
+                color: #fff;
+                font-size: 1.143rem;
+                font-family: PingFangSC-Medium;
+            }
+        }
+    }
+}

@@ -12,33 +12,39 @@ import * as types from '../mutation-types'
 import { GetLocalStorageObj } from './../../utils/utils'
 
 // 购物车页面所需请求
-import { orderGenerate, queryAddressList, setDefaultAddress, submitOrder} from '../../api/api.js';
+import { orderGenerate, queryAddressList, setDefaultAddress, submitOrder, addNewAddress, deleteAddress, updateNewAddress } from '../../api/api.js'
 
-//建立本页独立 数据模型
+// 建立本页独立 数据模型
 const state = {
-  address:{
-    data:[]
+  address: {
+    data: []
   },
-  orderInfo:null
+  editAddress:{
+    name:'',
+    area:'',
+    areaCityId:'',
+    areaProvinceId:'',
+    completeAddress:'',
+    mobile:''
+  },
+  orderInfo: null
 }
 
 // getters
 const getters = {
-  
 
 }
 
-
 // actions
-const actions = {  
-  //获取购物车数据
-  initOrderData({commit, state }){
+const actions = {
+  // 获取购物车数据
+  initOrderData({commit, state }) {
     console.log('获取购物车数据')
-    let orderInfo = GetLocalStorageObj('orderInfo');
-    commit(types.INITORDERGENERATE,orderInfo)
-    queryAddressList().then((res)=>{
-      if(res.code === 'A0000'){
-        commit(types.INITADDRESS,res)
+    let orderInfo = GetLocalStorageObj('orderInfo')
+    commit(types.INITORDERGENERATE, orderInfo)
+    queryAddressList().then((res) => {
+      if (res.code === 'A0000') {
+        commit(types.INITADDRESS, res)
       }
     })
   },
@@ -55,13 +61,52 @@ const actions = {
   setRemark({commit, state},  store ){
     commit(types.SETREMARK, store)
   },
-  doOrderSubmit({commit, state}, { 
-    addressId, cartId, storeInfo
-  }){
-    submitOrder(addressId, cartId, storeInfo).then((res)=>{
-      if(res.code === 'A0000'){
+  doOrderSubmit({commit, state}, {addressId, cartId, storeInfo}) {
+    submitOrder(addressId, cartId, storeInfo).then((res) => {
+      if (res.code === 'A0000') {
         console.log(res)
       }
+    })
+  },
+
+  // 添加地址
+  doAddNewAddress({commit, state},payload) {
+
+    addNewAddress(payload.area, payload.name, payload.mobile, payload.address).then((res) => {
+      if(res.code == 'A0000'){
+          queryAddressList().then((res) => {
+            if (res.code === 'A0000') {
+              commit(types.INITADDRESS, res)
+            }
+          })
+        }
+    })
+   // commit(types.ADDNEWADDRESS, res)
+  },
+  //刪除地址
+  doDeleteAddress({commit, state},item) {
+    deleteAddress(item.id).then((res)=>{
+      console.log(res+'delete')
+      if(res.code =='A0000'){
+        commit(types.DELETEADDRESS, item)
+      }
+    })
+  },
+  //設置將要修改地址
+  doEditAddress({commit, state},item){
+    commit(types.EDITADDRESS, item)
+  },
+  // updateAddress
+  doUpdateAddress({commit, state}, payload){
+    updateNewAddress(payload.id, payload.area, payload.name, payload.mobile, payload.address).then((res)=>{
+      if(res.code == 'A0000'){
+        queryAddressList().then((res) => {
+          if (res.code === 'A0000') {
+            commit(types.INITADDRESS, res)
+          }
+        })
+      }
+      //commit(types.UPDATEADDRESS, res)
     })
   }
   
@@ -97,23 +142,33 @@ const mutations = {
       }
     })
   },
-  //设置是否注册表
-  [types.SETISREGISTER](state, {
-    store,isRegister
-  }) {
+  // 设置是否注册表
+  [types.SETISREGISTER](state, {store, isRegister}) {
     store.isRegister = Number(isRegister)
   },
-  //设置商品留言
-  [types.SETREMARK](state, {
-    store,remark
-  }) {
+  // 设置商品留言
+  [types.SETREMARK](state, {store, remark}) {
     store.remark = remark
-  }
+  },
+
+  // 设置新地址
+  [types.ADDNEWADDRESS](state, {res}) {},
+  // 删除地址
+  [types.DELETEADDRESS](state, item) {
+    state.address.data.splice(item,1)
+  },
+  //設置將要修改的地址
+  [types.EDITADDRESS](state, item) {
+    state.editAddress = item
+  },
+  // 更新地址
+  [types.UPDATEADDRESS](state, item) {
+    
+  },
 }
 
 export default {
   state,
   getters,
   actions,
-  mutations
-}
+mutations}

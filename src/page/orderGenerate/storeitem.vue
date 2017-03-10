@@ -45,6 +45,7 @@
 		},
 		methods:{
 			doIsRegister(){
+				console.log(this.isRegister)
 				this.$store.dispatch('setIsRegister', {
 					store:this.store,
 					isRegister: !this.isRegister

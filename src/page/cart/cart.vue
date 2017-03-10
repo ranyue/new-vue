@@ -72,12 +72,15 @@
           isSelected: true,
           hasSelected: false
         };
-        this.$store.state.shopcart.cartlist.carts.forEach((item, index) => {
-          item.list.forEach((secItem, index) => {
-            secItem.isSelected == 0 ? flag.isSelected = false : '';
-            secItem.isSelected == 1 ? flag.hasSelected = true : ''
+        if(this.$store.state.shopcart.cartlist.carts){
+          this.$store.state.shopcart.cartlist.carts.forEach((item, index) => {
+            item.list.forEach((secItem, index) => {
+              secItem.isSelected == 0 ? flag.isSelected = false : '';
+              secItem.isSelected == 1 ? flag.hasSelected = true : ''
+            })
           })
-        })
+        }
+        
         return flag
       }
     },

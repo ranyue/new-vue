@@ -24,10 +24,13 @@
     .buttomImg{
         display: flex;
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
         div{
             background:#f4f4f4;
             border:1px solid #e3e3e3;
             margin-top: 20px;
+            width: 804px;
             img{
                 width: 100%;
             }

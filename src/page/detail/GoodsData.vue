@@ -13,7 +13,7 @@
                     <span v-if="model[0].agreePrice">协议价</span>
                 </div>
                 <div class="goods_info" >
-                    <span>市场价</span><span>{{model[0].salesPrice*1.1}}￥</span>
+                    <span>市场价</span><span>{{Math.floor(model[0].salesPrice*1.1)}}￥</span>
                 </div>
                 
             </div>

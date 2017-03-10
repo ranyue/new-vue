@@ -1,0 +1,35 @@
+.brands{
+    display: flex;
+    .logo{
+        width: 292px;
+        height: 303px;
+        background: #1EA7C6;
+        font-size: 28px;
+        font-family: PingFangSC-Medium;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: none;
+    }
+    .content{
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        border-top: 1px solid #e3e3e3;
+        margin-bottom: 30px;
+        div{
+            width: 20%;
+            height: 101px;
+            border-right: 1px solid #e3e3e3;
+            border-bottom: 1px solid #e3e3e3;
+            background: #fff;
+            flex: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("http://placehold.it/173x99");
+        }
+    }
+
+}
