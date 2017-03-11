@@ -42,8 +42,8 @@ import {mapState} from 'vuex';
     methods : {
       // 删除对应商品
       handleClick :  function (){
-        console.log('DELETE_SELECTED_MODEL',this.list.productId);
-        this.$store.commit('DELETE_SELECTED_MODEL',this.list.productId);
+        console.log('DELETE_SELECTED_MODEL',this.list.goodsSkuId);
+        this.$store.commit('DELETE_SELECTED_MODEL',this.list.goodsSkuId);
         
       },
       // 更改 商品数量
@@ -51,7 +51,7 @@ import {mapState} from 'vuex';
         
         this.$store.commit('HANDLE_BUY_NUM',{
           num : e,
-          id : this.list.productId,
+          id : this.list.goodsSkuId,
         })
       }
     }
@@ -62,6 +62,7 @@ import {mapState} from 'vuex';
   .goods-selected-detail{
     display: flex;
     justify-content: space-around;
+    margin-bottom: 20px;
     >div{
       &:nth-of-type(1){
         width: 380px;

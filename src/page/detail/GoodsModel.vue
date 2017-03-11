@@ -51,7 +51,11 @@ import ModelButton from './ModelButton.vue';
       padding-right: 24px;
       text-align:left;
     }
-    ul{
+    ul{ 
+      display: flex;
+      >li{
+        margin-right: 20px;
+      }
         .selectedStyle {   
           background-image :url('../../assets/check.png');
           background-size :25%;

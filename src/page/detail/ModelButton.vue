@@ -16,7 +16,7 @@
         methods : {
             handleClick : function(){
                 // 选择或者取消对应的商品规格
-                this.$emit('selected_models_change', this.value.productId);
+                this.$emit('selected_models_change', this.value.goodsSkuId);
             } 
         }
     }

@@ -41,11 +41,6 @@ import mapState from 'vuex';
             }
         },
         computed :{
-            // ...mapState({
-            //     product (state){
-            //         return state.search.product;
-            //     }
-            // })
             product(){
                 return  this.$store.state.search.product
             }

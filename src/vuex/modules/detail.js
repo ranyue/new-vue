@@ -66,7 +66,7 @@ const getters = {
         let num = 0;
         for (let i = 0; i < state.goods_model.length; i++) {
             if (state.goods_model[i].selected) {
-                num += state.goods_model[i].num * state.goods_model[i].salesPrice;
+                num +=  Math.ceil(state.goods_model[i].num * state.goods_model[i].salesPrice);
             }
         }
         return num;
@@ -160,15 +160,10 @@ const mutations = {
 
     // 更改商品规格
     [types.CHANGE_GOODS_MODEL](state, id) {
-
-
         for (let i = 0; i < state.goods_model.length; i++) {
-
-
-            console.log(state.goods_model[i].productId, id);
-            if (state.goods_model[i].productId == id) {
+            if (state.goods_model[i].goodsSkuId== id) {
                 //如果已经被选中，再点即取消
-                console.log(state.goods_model[i].productId);
+                console.log(state.goods_model[i].goodsSkuId);
                 if (state.goods_model[i].selected) {
                     state.goods_model[i].num = 0;
                 } else {
@@ -247,7 +242,7 @@ const mutations = {
 
         for (let i = 0; i < state.goods_model.length; i++) {
             console.log('mutation', i)
-            if (state.goods_model[i].productId == id) {
+            if (state.goods_model[i].goodsSkuId == id) {
                 state.goods_model[i].num = 0;
                 state.goods_model[i].selected = false;
             }
@@ -257,7 +252,7 @@ const mutations = {
     [types.HANDLE_BUY_NUM](state, { num, id }) {
         console.log('HANDLE_BUY_NUM', num, id)
         for (let i = 0; i < state.goods_model.length; i++) {
-            if (state.goods_model[i].productId == id) {
+            if (state.goods_model[i].goodsSkuId == id) {
                 state.goods_model[i].num = num;
             }
         }

@@ -65,6 +65,8 @@ const state = {
         // }
     ],
     err: null,
+    search_key : []
+
 }
 
 const getters = {
@@ -97,6 +99,29 @@ const mutations = {
     [types.SEARCH_BY_TEXT_FAILED](state, payload) {
         console.log(payload);
         state.err = payload;
+    },
+    [types.SELECT_SEARCH_KEY](state,payload){
+        state.search_key.push(payload);
+    },
+    [types.CANCEL_SEARCH_KEY](state,payload){
+       
+        // state.search_key.filter(item=>{
+        //     console.log(item,payload)
+        //     return item != payload;
+        // });
+        
+        let index = state.search_key.indexOf(payload)
+        console.log(index);
+        state.search_key.splice(index,1);
+ 
+    },
+    [types.CHANGE_SELECT_KEY](state,payload){
+        let index = state.search_key.indexOf(payload);
+        if(index >-1){
+            state.search_key.splice(index,1);
+        }else{
+             state.search_key.push(payload);
+        }
     }
 }
 

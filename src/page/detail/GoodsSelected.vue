@@ -2,10 +2,11 @@
 <template>
     <div class="goods-selected">
         <h3>已选清单</h3>
-        
-        <div v-for="item in selectedList">
-              <selected v-bind:list="item"></selected>
-        </div>     
+     
+        <div >
+              <selected v-bind:list="item" v-for="item in selectedList"></selected>
+        </div>
+             
     </div>
 </template>
 
@@ -29,12 +30,13 @@ import {mapState,mapGetters} from 'vuex';
     .goods-selected{
         display:  flex;
         margin-top: 20px;
-        height: 34px;
+       flex-wrap: wrap;
         >h3{
             padding-right: 24px;
         }
         >div{
             display: flex;
+            flex-direction: column;
         }
     }
 </style>

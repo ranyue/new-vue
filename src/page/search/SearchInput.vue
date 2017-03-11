@@ -1,6 +1,6 @@
 <template>
     <div class="searchInput">
-        <input type="text" placeholder="请输入要查询的商品" ref="input">
+        <input type="text" placeholder="请输入要查询的商品" ref="input" v-on:keyup.enter="handleClick">
         <button type="button" v-on:click="handleClick">查询</button>
     </div>
 </template>

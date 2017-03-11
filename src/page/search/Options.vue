@@ -3,27 +3,65 @@
         <div>
             <span>分类</span>
             <ul>
-                <li>品牌 ：3M</li>
+                <!--<li v-on:click="handleSelect">品牌 ：3M</li>-->
+                 <li 
+                    v-bind:key ="index"
+                    v-for="(item,index) in value"
+                    v-on:click="handleChangeSearchKey(item)">
+                   {{item}}
+                </li>
             </ul>
         </div>
         <div>
             <span>品牌</span>
             <ul>
-                <li>品牌 ：3M</li>
+                <!--<li  v-on:click="handleSelect">品牌 ：3M</li>-->
+
+                 <li 
+                    v-bind:key ="index"
+                    v-for="(item,index) in value"
+                    v-on:click="handleChangeSearchKey(item)">
+                   {{item}}
+                </li>
             </ul>
         </div>
         <div>
             <strong>您已选择</strong>
+          
             <ul>
-                <li>品牌 ：3M  x</li>
+                <!--<li  v-on:click="handleCancel">品牌 ：3M  x</li>-->
+                <li 
+                    v-for="(item,index) in selectedKey"
+                    v-on:click="handleChangeSearchKey(item)"
+                    v-bind:key="index"
+                    >
+                    {{item}}x
+                </li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
 
+import {mapState} from 'vuex'
+    export default {
+        data(){
+            return {
+                value  : [111,2222,3333,4444]
+            }
+        },
+        computed : {
+                selectedKey(){
+                   return  this.$store.state.search.search_key
+                }
+            },
+        
+        methods:{
+            handleChangeSearchKey(item){
+                this.$store.commit('CHANGE_SELECT_KEY',item);
+            }
+        }
 
 
     }
@@ -63,6 +101,7 @@
                     color:#666a73;
                     line-height:14px;
                     margin-right: 50px;
+                         cursor: pointer;
                 }
             }
             &:nth-of-type(1){
@@ -96,13 +135,15 @@
                    
                     li{
                      background:#ffffff;
-                        border:1px solid #f1496f;
-                        height:28px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                         padding: 8px 10px;
-                         margin-right: 7px;
+                    border:1px solid #f1496f;
+                    height:28px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 8px 10px;
+                    margin-right: 7px;
+                    // cursor: pointer;
+
                         
                     }
                 }
