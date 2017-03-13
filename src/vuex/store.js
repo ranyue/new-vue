@@ -6,6 +6,8 @@ import * as actions from './actions'
 import * as getters from './getters'
 
 //new add
+import index from './modules/index'
+
 import shopcart from './modules/shopcart'
 import detail from './modules/detail'
 import ordergenerate from './modules/orderGenerate.js'
@@ -27,6 +29,7 @@ export default new Vuex.Store({
         ordergenerate,
         searchResult,
         search,
+        index
     },
     strict: debug
 })

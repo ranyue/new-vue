@@ -3,19 +3,47 @@ body, html {
     font-family: PingFangSC-Medium;
     font-size: 16px;
     #app {
-    margin: 0 auto;
-    height: 100%;
-    &>*{
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        max-width: 1160px;
+        margin: 0 auto;
         height: 100%;
-        margin: auto;
+        &>*{
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1160px;
+            height: 100%;
+            margin: auto;
+            .publish{
+                height: 123px;
+                width: 1158px;
+                border: 1px solid #e3e3e3;
+                background: #00a8cb;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 10px;
+                i{
+                    font-size: 50px;
+                    color: #fff;
+                }
+                div{
+                    margin-left: 20px;
+                    p{
+                        font-size: 22px;
+                        color: #fff;
+                        font-family: PingFangSC-Medium;
+                    }
+                }
+            }
+
+            .title-icon{
+                 width:22px;
+                height:26px;
+                background-size: 100%; 
+                margin-right:5px;
+            }
         }
     }
-    
 }
     
     

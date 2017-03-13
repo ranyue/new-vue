@@ -22,7 +22,7 @@
       </div>
       <div>
         <input type="button" @click='doAddNewAddress' name="" value="保存">
-        <input type="button" name="" value="取消">
+        <input type="button" name="" @click='close' value="取消">
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
   import options from './area.js';
   export default {
     name: 'AddAddress',
-    props: ['address'],
+    props: ['address','show'],
     data() {
       return {
         options: options,
@@ -90,6 +90,9 @@
           })
         }
 
+      },
+      close(){
+        this.$store.dispatch('doShowAddAddress',0);
       }
     }
   }

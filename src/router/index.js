@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Cart from '@/page/cart/cart';
 import OrderGenerate from '@/page/orderGenerate/orderGenerate.vue';
+import OrderSuccess from '@/page/orderSuccess/index.vue';
+
 import Detail from '@/page/detail/index.vue';
 
 import searchResult from '@/page/searchResult/index.vue';
@@ -37,5 +39,9 @@ export default new Router({
         path: '/search',
         name: 'search',
         component: search,
+    },{
+        path: '/orderSuccess',
+        name: 'orderSuccess',
+        component: OrderSuccess,
     }]
 })

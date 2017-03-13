@@ -3,6 +3,7 @@
 
 <template>
   <div class='order-generate'>
+    <TheHeader></TheHeader>
     <OrderStatusBar currentStatus='2'></OrderStatusBar>
     <div class='main'>
       <div class='common-title'>确认订单信息</div>
@@ -21,8 +22,8 @@
         <div>
           <AddressItem v-for='(item, index) in address.data' :addressItem='item' :key='index'></AddressItem>
         </div>
-        <div>新增收货地址</div>
-        <AddAddress :address='editAddress'></AddAddress>
+        <div :class="{'add-new-btn-unable' : showAddAddress}" @click='setVisibility'>新增收货地址</div>
+        <AddAddress v-if='showAddAddress'  :address='editAddress'></AddAddress>
       </div>
       <div>
         <div>
@@ -37,6 +38,7 @@
   </div>
 </template>
 <script>
+  import TheHeader from './../../components/header/index.vue'
   import OrderStatusBar from './../../components/common/orderStatusBar.vue';
   import StoreItem from './storeItem.vue';
   import AddressItem from './address.vue';
@@ -48,6 +50,7 @@
     name: 'OrderGenerate',
     props: [],
     components: {
+      TheHeader,
       OrderStatusBar,
       StoreItem,
       AddressItem,
@@ -59,6 +62,9 @@
       }
     },
     computed: {
+      showAddAddress(){
+        return this.$store.state.ordergenerate.showAddAddress
+      },
       cartinfo() {
         return this.$store.state.ordergenerate.orderInfo
       },
@@ -98,8 +104,15 @@
         this.$store.dispatch('doOrderSubmit', {
           addressId: this.$store.state.ordergenerate.addressId,
           cartId: cartsId,
-          storeInfo: storeInfo
+          storeInfo: storeInfo,
+          router: this.$router
         })
+      },
+      setVisibility(){
+         this.$store.dispatch('doShowAddAddress',1);
+      },
+      setInVisibility(){
+        this.addNewBtn = false
       }
     }
   }
@@ -149,7 +162,7 @@
               line-height: 30px;
               border-radius: 4px;
               text-align: center;
-              margin-top: 10px;
+              margin: 10px 0;
             }
           }
         }
@@ -188,6 +201,9 @@
         line-height: 30px;
         font-size: 16px;
         color: #3d3d3d;
+      }
+      .add-new-btn-unable{
+        background-color: #9397a2 !important;
       }
     }
   }

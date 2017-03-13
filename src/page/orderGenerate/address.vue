@@ -13,13 +13,15 @@
 		<div @click='setDefault'>
 			<div>
 				<div>所在地区</div>
-				<div>地址</div>
-				<div>手机</div>
+				<div>{{addressItem.areaFullName}}</div>
 			</div>
 			<div>
-				<div>{{addressItem.areaFullName}}</div>
-				<div>{{addressItem.completeAddress}}</div>
-				<div>{{addressItem.mobile}}</div>
+					<div>地址</div>
+					<div>{{addressItem.completeAddress}}</div>
+			</div>
+			<div>
+					<div>手机</div>
+					<div>{{addressItem.mobile}}</div>
 			</div>
 		</div>
 		<div v-if='addressItem.isDefault' class='check'></div>
@@ -79,14 +81,19 @@
 			}
 			&:nth-of-type(2){
 				padding-top:20px;
-				line-height: 30px;
+				line-height: 25px;
+				flex-direction: column;
+				justify-content: space-around;
 				>div{
-					&:nth-of-type(1){
-						width: 70px;
-						color:#666a73;
-					}
-					&:nth-of-type(2){
-						
+					display: flex;
+					>div{
+						&:nth-of-type(1){
+							width: 70px;
+							color:#666a73;
+						}
+						&:nth-of-type(2){
+							width: 220px;
+						}
 					}
 				}
 			}

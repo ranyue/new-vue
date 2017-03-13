@@ -47,6 +47,8 @@ export const API = {
     // 设置添加购物车
     addCart: apiPath + '/etrade/business/cart/add',
     // 设置产品列表搜索
+    pcProductSearch: apiPath + '/etrade/enterprise/product/search',
+    // app 产品搜索列表
     productSearch: apiPath + '/etrade/product/search',
     // 设置产品分类类目
     productClass: apiPath + '/etrade/product/productClass',
@@ -75,6 +77,17 @@ export const API = {
     //PC端添加购物车接口
     pcAddCart: apiPath + '/etrade/business/cart/add/batch',
 
+    // PC所有产品类别
+    allBrands: apiPath + "/etrade/enterprise/product/allbrands",
+
+    // pc端 首页品牌配置项
+    layoutBrand: apiPath + '/etrade/enterprise/product/layoutbrand',
+    // pc端 首页热门商品配置项
+    getHotProduct: apiPath + '/etrade/enterprise/product/search',
+
+
+
+
 
 }
 
@@ -91,10 +104,17 @@ export const pcAddCart = (arr) => {
 }
 
 
+
+
+
+/*
+    下方是购物车所用到部分
+*/
+
 // 可能常量
-const userId = '21:2:3';
-const tenantId = 'abcd';
-// 获取商品详细信息
+const userId = '21:2:3'
+const tenantId = '21'
+    // 获取商品详细信息
 export const getGoodsDetail = (productid) => {
     let obj = {
         productid,
@@ -105,7 +125,6 @@ export const getGoodsDetail = (productid) => {
     console.log(obj, 'apiPath')
     return Fetch(API.productDetail, obj)
 }
-
 
 // 请求购物车列表
 
@@ -147,7 +166,11 @@ export const selectGood = (id, type, isSelected) => {
         }
         return Fetch(API.selectGood, obj)
     }
-    // 获取订单确认商品
+    /*
+        订单确认页面所需接口
+    */
+
+// 获取订单确认商品
 export const orderGenerate = (items) => {
         console.log('orderGenerate')
         let obj = {
@@ -156,7 +179,11 @@ export const orderGenerate = (items) => {
         }
         return Fetch(API.generateOrder, obj)
     }
-    // 获取地址列表
+    /*
+        订单页面 地址所需接口
+    */
+
+// 获取地址列表
 export const queryAddressList = () => {
         let obj = {
             userId: userId
@@ -166,7 +193,7 @@ export const queryAddressList = () => {
     // 设置默认地址
 export const setDefaultAddress = (id) => {
 
-        // order 提交
+
 
         let obj = {
             id: id,
@@ -252,7 +279,65 @@ export const productSearch = ({ searchtype, order, start, num, class1, class2, c
         return Fetch(API.productSearch, obj)
     }
     //  搜索页商品搜索
-export const search = ({ searchtype = 5, text, start = 0, num = 10 }) => {
+export const search = ({ searchtype = 1, text, start = 0, num = 10, class3, brand }) => {
+        console.log(class3, 'class3');
+        let obj = {
+            searchtype,
+            text,
+            start,
+            num,
+            tenantId,
+            class3,
+            brand
+        };
+        if (!class3) {
+            delete obj.class3
+        }
+        if (!brand) {
+            delete obj.brand;
+        }
+        if (!text) {
+            delete obj.text;
+        }
+        // if (class3 & brand) {
+        //     console.log('多');
+        //     obj = {
+        //         searchtype,
+        //         // text,
+        //         start,
+        //         num,
+        //         tenantId,
+        //         // class3,
+        //         brand,
+        //     }
+        // } else {
+        //     console.log('少')
+        //     obj = {
+        //         searchtype,
+        //         text,
+        //         start,
+        //         num,
+        //         tenantId,
+        //     }
+        // }
+
+
+        console.log(obj, 'api');
+        return Fetch(API.pcProductSearch, obj)
+    }
+    //获取商品分类列表
+export const getProductClass = () => {
+
+    let obj = {
+
+    }
+    return Fetch(API.productClass, obj)
+
+}
+
+export const getAllBrands = () => {
+    return Fetch(API.allBrands)
+
     let obj = {
         searchtype,
         text,
@@ -262,4 +347,43 @@ export const search = ({ searchtype = 5, text, start = 0, num = 10 }) => {
     }
     console.log(obj);
     return Fetch(API.productSearch, obj)
+
+    let obj = {
+        searchtype,
+        text,
+        start,
+        num,
+        tenantId
+    }
+    console.log(obj)
+    return Fetch(API.productSearch, obj)
+}
+
+
+
+
+// 首页品牌配置项 
+export const layoutBrand = () => {
+    return Fetch(API.layoutBrand)
+}
+
+export const getHotProduct = () => {
+    let obj = {
+        searchtype: 4,
+        tenantId: tenantId,
+        start: 0,
+        num: 20
+    }
+    return Fetch(API.getHotProduct, obj);
+}
+
+export const getPromption = () => {
+    let obj = {
+        tenantId: tenantId,
+        searchtype: 6,
+        start: 0,
+        num: 10
+    }
+    return Fetch(API.productSearch, obj)
+
 }

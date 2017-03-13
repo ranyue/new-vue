@@ -7,15 +7,17 @@
 <script>
     export default {
         computed: {
-
+            text(){
+                return this.$store.state.search.text
+            }
         },
         methods: {
             handleClick (){
                 // { searchtype = 5, text, start = 0, num = 10, tenantId }
-                console.log(this.$refs.input.value);
-                this.$store.dispatch('search_by_text',{
-                    text : this.$refs.input.value,
-                });
+                
+                this.$store.commit('GET_TEXT_BY_USER',this.$refs.input.value)
+              
+                this.$store.dispatch('search_by_user',{text:this.text});
             }
         }
 
@@ -34,7 +36,8 @@
             height: 35px;
             background:#ffffff;
             border:2px solid #f1496f;
-            border-radius:4px; 
+            border-radius:4px;
+            padding-left: 20px; 
             outline:none;
             &:hover{
                

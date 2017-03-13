@@ -58,6 +58,20 @@ import mapState from 'vuex';
                 this.currentPage = val;
                 console.log(`当前页: ${val}`);
             },
+            getCategory(){
+                this.$store.dispatch('get_all_category');
+            },
+            getAllBrands(){
+                this.$store.dispatch('get_all_brands');
+            }
+            
+          
+        },
+        created: function(){
+        
+            this.getCategory();
+            this.getAllBrands();
+                console.log('11111')
         }
     }
 </script>

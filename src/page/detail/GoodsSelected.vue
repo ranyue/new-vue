@@ -4,7 +4,7 @@
         <h3>已选清单</h3>
      
         <div >
-              <selected v-bind:list="item" v-for="item in selectedList"></selected>
+              <selected v-bind:list="item" v-for="(item,index) in selectedList" v-bind:key="index"></selected>
         </div>
              
     </div>

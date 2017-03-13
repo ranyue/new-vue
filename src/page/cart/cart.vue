@@ -8,9 +8,10 @@
 
 
 <template>
-  <div v-if="productlist" class="cart">
+  <div  v-if="productlist"  class="cart">
+    <TheHeader></TheHeader>
     <OrderStatusBar currentStatus='1'></OrderStatusBar>
-    <div class="cart-main">
+    <div v-if="productlist.hasOwnProperty('carts')" class="cart-main">
       <div>
         全部商品（<span>{{productlist.totleNum}}</span>）
       </div>
@@ -42,12 +43,13 @@
         </div>
       </div>
     </div>
+    <div v-else class='none-cart'>
+    </div>
   </div>
-  <div v-else>
-    <OrderStatusBar currentStatus='1'></OrderStatusBar>
-  </div>
+  
 </template>
 <script>
+  import TheHeader from './../../components/header/index.vue'
   import OrderStatusBar from './../../components/common/orderStatusBar.vue';
   import StoreItem from './storeItem.vue';
   import {
@@ -56,6 +58,7 @@
   export default {
     name: 'Cart',
     components: {
+      TheHeader,
       OrderStatusBar,
       StoreItem
     },
@@ -232,6 +235,12 @@
       .has-selected {
         background-color: $baseColor !important;
       }
+    }
+    .none-cart {
+      height: 300px;
+      background-image: url(./../../assets/emptyCart.png);
+      background-repeat: no-repeat;
+      background-position: center;
     }
   }
 

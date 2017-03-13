@@ -7,7 +7,16 @@
       <Statistics></Statistics>
       <Promption></Promption>
       <Brands></Brands>  
-      <MomentBuy></MomentBuy>
+      <Scene></Scene>
+      <HotGoods></HotGoods>
+      <div class="publish">
+            <i class="material-icons">insert_drive_file</i>
+            <div>
+                <p>没找到想要的?</p>
+                <p>发布采购需求 ></p>
+            </div>
+      </div>
+      <FooterView></FooterView>
   </div>
 </template>
 
@@ -19,11 +28,13 @@ import Slider from './Slider.vue'
 import Statistics from './Statistics.vue'
 import Brands from './Brands.vue'
 import Promption from './Promption.vue'
-import MomentBuy from './MomentBuy.vue'
+import Scene from './Scene.vue'
+import HotGoods from './HotGoods.vue'
+import FooterView from './FooterView.vue'
 import './Index.scss'
 
 export default {
-  components: { TopBar, SearchBar, NavBar, Slider, Statistics, Brands, Promption, MomentBuy },
+  components: { TopBar, SearchBar, NavBar, Slider, Statistics, Brands, Promption, Scene, HotGoods, FooterView },
   computed: {
   },
   data() {
@@ -50,6 +61,10 @@ export default {
               linkto: "#specialbuy"
           }]
       }
+  },
+  beforeCreate(){
+    this.$store.dispatch('indexInitData');
   }
+
 }
 </script>
