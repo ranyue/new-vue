@@ -80,14 +80,19 @@ const state = {
     }],
     text: null,
     brand: [],
-    class3: '',
+    class3:[],
 
 
 }
 
 const getters = {
     get_class_string(state) {
-
+         let string = '';
+        state.class3.map(item => {
+            string += item.id + ';'
+        })
+        string = string.substring(0, string.length - 1);
+        return string;
     },
     get_brand_string(state) {
         let string = '';
@@ -215,14 +220,32 @@ const mutations = {
     },
     // 获取用户输入的品牌
     [types.GET_BRANDS_BY_USER](state, payload) {
+        
         state.brand.push(payload);
+       
     },
     // 获取用户输入的 三级分类
     [types.GET_CATEGORY_BY_USER](state, payload) {
-        state.class3 = payload;
+        state.class3.push(payload);
     },
     [types.GET_TEXT_BY_USER](state, payload) {
         state.text = payload;
+    },
+    //删除  选中品牌
+    [types.DELETE_BRAND_BUY_USER](state,payload){
+         for(let i =0;i<state.brand.length;i++){
+            if(state.brand[i] == payload){
+                state.brand.splice(i,1);
+            }
+        }
+    },
+    //删除选中分类
+    [types.DELETE_CATEGORY_BY_USER](state,payload){
+        for(let i =0;i<state.class3.length;i++){
+            if(state.class3[i] == payload){
+                state.class3.splice(i,1);
+            }
+        }
     }
 
 }

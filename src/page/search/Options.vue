@@ -30,21 +30,18 @@
             <ul>
                 <li >品牌 ：3M  x</li>
                 <li v-if="text">关键字{{text}}  x</li>
-                <li v-if=""
-                    v-for="(item,index) in selectedKey"
-                    v-on:click="handleChangeSearchKey(item)"
+                <li 
+                    v-for="(item,index) in class3"
+                    v-on:click="deleteCategory(item)"
                     v-bind:key="index"
                     >
-                    分类{{item}}  x
+                    分类{{item.name}}  x
                 </li>
-
                 <li v-if="brand"
                     v-for="(item,index) in brand "
                     v-bind:key="index"
+                    v-on:click = "deleteBrand(item)"
                     >品牌{{item.name}}  x</li>
-                   
-             
-              
             </ul>
         </div>
     </div>
@@ -92,16 +89,13 @@ import {mapState,mapGetters} from 'vuex'
             },
             // 处理 品牌变动
             handleChangeBrand(item){
-                console.log(({
-                    text : this.text,
-                    brand : this.brand,
-                    class3 : this.class3
-                }),"多数据")
+               
+                // 处理 品牌数据
                 this.$store.commit('GET_BRANDS_BY_USER',item);
                 this.$store.dispatch('search_by_user',{
                     text : this.text,
                     brand : this.brandString,
-                    class3 : this.class3
+                    class3 : this.classString
                 });
             },
             // 处理   三级分类变动
@@ -113,7 +107,8 @@ import {mapState,mapGetters} from 'vuex'
                     }       
                 })
                 string = string.substring(0,string.length-1);
-                this.$store.commit('GET_CATEGORY_BY_USER',string,{
+                // 处理推进 class3   数据
+                this.$store.commit('GET_CATEGORY_BY_USER',{
                     name : index,
                     class3String : string
                 });
@@ -121,7 +116,27 @@ import {mapState,mapGetters} from 'vuex'
                 this.$store.dispatch('search_by_user',{
                       text : this.text,
                     brand : this.brandString,
-                    class3 : this.class3
+                    class3 : this.classString
+                });
+            },
+            //删除已选分类
+            deleteCategory(item){
+                this.$store.commit('DELETE_CATEGORY_BY_USER',{
+                    name : item.name,
+                    class3String : item.string
+                });
+                 this.$store.dispatch('search_by_user',{
+                      text : this.text,
+                    brand : this.brandString,
+                    class3 : this.classString
+                });
+            },
+            deleteBrand(item){
+                this.$store.commit('DELETE_BRAND_BY_USER',item);
+                 this.$store.dispatch('search_by_user',{
+                      text : this.text,
+                    brand : this.brandString,
+                    class3 : this.classString
                 });
             }
         }
